@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        color: #333;
+        line-height: 1.6;
+      }
+      .header {
+        font-size: 18px;
+        color: #444;
+        margin-bottom: 20px;
+      }
+      .article {
+        margin-bottom: 15px;
+        padding: 10px;
+        border: 1px solid #ddd;
+      }
+      .article-title {
+        font-size: 18px;
+        color: #007BFF;
+      }
+      .article-title a {
+        text-decoration: none;
+        color: #007BFF;
+      }
+      .article-meta {
+        font-size: 14px;
+        color: #555;
+      }
+      .summary {
+        margin-top: 20px;
+        font-size: 16px;
+      }
+      .summary-item {
+        font-size: 14px;
+        color: #666;
+      }
+      .footer {
+        margin-top: 30px;
+        font-size: 12px;
+        color: #999;
+      }
+      a:hover {
+        opacity: 0.8
+      }
+    </style>
+  </head>
+  <body>
+    <h2><?= username ?> さん、今週の振り返りをお送りします</h2>
+    <div class="header">今週（<?= startDate ?> 〜 <?= endDate ?>）に投稿された記事の一覧です</div><br>
+
+    <? for (var i = 0; i < articles.length; i++) { ?>
+    <div class="article">
+      <div class="article-title">
+        <a href="<?= articles[i].url ?>" target="_blank"><?= articles[i].title ?></a>
+      </div>
+      <div class="article-meta">
+        <p>投稿日: <?= articles[i].date ?></p>
+        いいね数: <?= articles[i].likes ?> | ストック数: <?= articles[i].stocks ?> | コメント数: <?= articles[i].comments ?> | ビュー数: <?= articles[i].views ?>
+      </div>
+    </div>
+    <br>
+    <? } ?>
+
+    <div class="summary">
+      <div class="summary-item">総合いいね数: <?= totalLikes ?></div>
+      <div class="summary-item">総合ストック数: <?= totalStocks ?></div>
+      <div class="summary-item">総合コメント数: <?= totalComments ?></div>
+      <div class="summary-item">総合ビュー数：<?= totalViews ?></div>
+    </div>
+
+    <div class="footer">
+      これからも、素晴らしい記事の投稿をお待ちしています！<br>
+      Qiita Weekly Report Bot
+    </div>
+  </body>
+</html>
